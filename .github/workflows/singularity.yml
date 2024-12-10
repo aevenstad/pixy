@@ -6,6 +6,10 @@ on:
       - main  # Triggers on a push to the main branch
   workflow_dispatch:  # Allows manual triggering of the workflow
 
+permissions:
+  contents: write   # Allow creating releases and pushing code changes
+  issues: write     # Optional: Allow issue management
+
 jobs:
   build:
     runs-on: ubuntu-latest
