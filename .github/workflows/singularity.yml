@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: sylabsio/singularity:3.11.3
+      image: ghcr.io/apptainer/apptainer:1.2.2
 
     steps:
       # Step 1: Check out the repository
