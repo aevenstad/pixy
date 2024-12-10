@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: sylabsio/singularity:3.11.3
 
     steps:
       # Step 1: Check out the repository
