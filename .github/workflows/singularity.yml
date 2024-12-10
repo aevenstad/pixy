@@ -46,12 +46,12 @@ jobs:
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
-        env: GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: v1.0.0  # Change this for each version
           release_name: Singularity Container v1.0.0
           draft: false
           prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       # Step 5: Upload Singularity Image to Release
       - name: Upload Singularity Image
