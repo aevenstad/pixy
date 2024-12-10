@@ -29,11 +29,13 @@ jobs:
             git \
             cryptsetup
 
-          export VERSION=3.11.3  # Update to the desired version
-          wget https://github.com/apptainer/singularity/releases/download/v$VERSION/singularity-$VERSION.tar.gz
-          tar -xzf singularity-$VERSION.tar.gz
-          cd singularity-$VERSION
-          ./mconfig && make -C builddir && sudo make -C builddir install
+          export VERSION=1.2.2  # Update to the desired version
+          wget https://github.com/apptainer/apptainer/releases/download/v$VERSION/apptainer-$VERSION.tar.gz
+          tar -xzf apptainer-$VERSION.tar.gz
+          cd apptainer-$VERSION
+          ./mconfig
+          make -C builddir
+          sudo make -C builddir install
 
       # Step 3: Build Singularity Image
       - name: Build Singularity Image
