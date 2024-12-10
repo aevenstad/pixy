@@ -51,7 +51,7 @@ jobs:
           release_name: Singularity Container v1.0.0
           draft: false
           prerelease: false
-          token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Step 5: Upload Singularity Image to Release
       - name: Upload Singularity Image
