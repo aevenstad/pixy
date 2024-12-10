@@ -24,7 +24,7 @@ jobs:
       # Step 3: Build Singularity Image
       - name: Build Singularity Image
         run: |
-          singularity build pixy.sif miniconda.def
+          singularity build --debug pixy.sif miniconda.def
 
       # Step 4: Create GitHub Release
       - name: Create Release
