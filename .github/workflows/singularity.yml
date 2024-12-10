@@ -9,8 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/apptainer/apptainer:1.2.2
 
     steps:
       # Step 1: Check out the repository
@@ -20,8 +18,22 @@ jobs:
       # Step 2: Install Singularity
       - name: Install Singularity
         run: |
-          sudo apt-get update
-          sudo apt-get install -y singularity-container
+          sudo apt-get update && sudo apt-get install -y \
+            build-essential \
+            uuid-dev \
+            libgpgme-dev \
+            squashfs-tools \
+            libseccomp-dev \
+            wget \
+            pkg-config \
+            git \
+            cryptsetup
+
+          export VERSION=3.11.3  # Update to the desired version
+          wget https://github.com/apptainer/singularity/releases/download/v$VERSION/singularity-$VERSION.tar.gz
+          tar -xzf singularity-$VERSION.tar.gz
+          cd singularity-$VERSION
+          ./mconfig && make -C builddir && sudo make -C builddir install
 
       # Step 3: Build Singularity Image
       - name: Build Singularity Image
