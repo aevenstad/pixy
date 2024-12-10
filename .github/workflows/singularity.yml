@@ -9,6 +9,7 @@ on:
 permissions:
   contents: write   # Allow creating releases and pushing code changes
   issues: write     # Optional: Allow issue management
+  deployments: write  # Required for managing deployments (optional)
 
 jobs:
   build:
@@ -66,3 +67,6 @@ jobs:
           asset_path: ./pixy.sif
           asset_name: pixy.sif
           asset_content_type: application/octet-stream
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
